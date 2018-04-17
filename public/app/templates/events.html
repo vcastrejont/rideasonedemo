@@ -1,0 +1,52 @@
+
+<div id="eventhome" class="panel center ">
+  <form class=""  method="post">
+    <div class="input-group search-group">
+      <input type="text" class="form-control" autofocus placeholder="Type to search events…" ng-model="eventSearch">
+      <a href="#" class="input-group-addon">Search</a>
+    </div>
+    <div class="results">
+      <ul class="filters">
+        <li><a href="#" class="sel">Upcoming events</a></li>
+        <li><a href="#">Popular</a></li>
+        <li><a href="#">Latest</a></li>
+      </ul>
+
+      <div class="events">
+        <div class="row event" ng-repeat="event in nextEvents | filter:eventSearch" ui-sref="eventshow({ id: event._id})">
+          <div class="col-xs-2 date">
+            <p class="day">{{event.starts_at | date:'d'}}</p>
+            <p class="month">{{event.starts_at | date:'MMMM'}}</p>
+          </div>
+          <div class="col-xs-5 mid">
+            <p class="title">{{event.name}}</p>
+            <p class="location">at {{event.place.name}} </p>
+          </div>
+          <div class="col-xs-5 right">
+            <p class="time">From {{event.starts_at | date:'h a'}} to  {{event.ends_at | date:'h a'}}  </p>
+            <p class="cars">{{event.cars.length}} cars /  seats available</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="button" class="btn btn-ride " ui-sref="eventsnew"><i class="fa fa-plus" aria-hidden="true"></i> Create new event</button>
+    </div>
+
+  </form>
+
+
+<script>
+  $(document).ready(function(){
+    $('.events').slimScroll({
+      position: 'right',
+      height: '250px',
+      railVisible: false,
+      alwaysVisible: false,
+      color: '#59BFDF',
+      distance: '0',
+      size: '5px'
+    });
+  });
+</script>

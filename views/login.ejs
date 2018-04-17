@@ -1,0 +1,58 @@
+<!doctype html>
+<html class="no-js" lang="en" ng-app="carPoolingApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Carpooling - </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" href="assets/icons/favicon.ico">
+        <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="/assets/css/app.css">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="764821343773-cjpf8lnubnnmjrupiu8oen4vsacgcq9n.apps.googleusercontent.com">
+    </head>
+    <body style="overflow:hidden">
+      
+      <section id="login">
+        <div class="row loginform">
+          <div class="col-sm-4 col-sm-offset-4 box bg" >
+            <header class="text-center">
+              <h1>Ride as One</h1>
+            </header>
+            <main >
+              <p>To continue please sign in with your Google account:</p>
+              <br>
+              <div class="g-signin2" data-onsuccess="onSignIn"></div>
+               <p>Having trouble? Please <a href="mailto:vcastrejon@nearosft.com">contact us</a>.</p>
+               <a href="#" onclick="signOut();">Sign out</a>
+            </main>
+          </div>
+        </div>
+        
+        <video autoplay loop poster="polina.jpg" id="bgvid">
+            <source src="/assets/video/WEBM/Right-way.webm" type="video/webm">
+            <source src="/assets/video/MP4/Right-way.MP4" type="video/mp4">
+        </video>
+
+      
+      </section>
+
+      <script>
+        function signOut() {
+          var auth2 = gapi.auth2.getAuthInstance();
+          auth2.signOut().then(function () {
+            console.log('User signed out.');
+          });
+        }
+        function onSignIn(googleUser) {
+          var id_token = googleUser.getAuthResponse().id_token;
+          var profile = googleUser.getBasicProfile();
+          console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+          console.log('Name: ' + profile.getName());
+          console.log('Image URL: ' + profile.getImageUrl());
+          console.log('Email: ' + profile.getEmail());
+          console.log('id_token: ' + id_token);
+        }
+      </script>
+<% include footer %>

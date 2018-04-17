@@ -1,0 +1,48 @@
+
+<div id="notifications" class="panel center ">
+  <h2>Notifications</h2>
+  <div class="row">
+    <div id="list">
+      <a class="row" ng-repeat="message in view.notifications" ng-click="view.show(message)" ng-class="{selected: message._id === view.current._id, sent: message.status === 'SENT'}">
+        <div class="pic">
+          <img ng-src="{{message.sender.photo}}" alt="{{message.sender.name}}" class="profile md border" >
+        </div>
+        <div class="subject">
+          {{message.message}} 
+        </div>
+        <div class="date">
+        {{ message.created_at | amDateFormat:'MMM DD '}}
+        </div>
+      </a>
+      <div class="empty" ng-hide="!view.notifications">
+        There are no new notifications to show
+      </div>
+      
+      
+    </div>
+    <div id="message" ng-show="view.current">
+      <img src="{{view.current.recipient.photo}}" alt="" class="profile xl " >
+      <p>{{view.current.message}}</p>
+      <p><strong>{{view.request.ride.place.name}}</strong> 
+        {{view.request.ride.departure | amDateFormat:'MMM DD  h:mm a'}}</p>
+      <a ng-click="view.accept(message)" >
+        <i class="fa fa-check" aria-hidden="true"></i> 
+        <div>
+          <h4>Yes join my car</h4>
+          <p>I will pick you up and lets have fun</p>
+        </div>
+      </a>
+      <a href="#">
+        <i class="fa fa-times" aria-hidden="true"></i>
+        <div>
+          <h4>No sorry<h44>
+          <p>I can’t drive you</p>
+        </div>
+      </a>
+    </div>
+    <div id="message"  ng-hide="view.current">
+      
+    </div>
+  </div>
+  
+</div>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html class="no-js" lang="en" ng-app="carPoolingApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Carpooling - </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" href="assets/icons/favicon.ico">
+        <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="/assets/css/app.css">
+
+        <!-- Vendor scripts -->
+        <script src="/components/jquery/dist/jquery.min.js"></script>
+        <script src="/components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFTH_Sly3AHfEXLm_JsckSZaiQX8S49tk&libraries=places"></script>
+        <script src="/components/angular/angular.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js">
+        </script>
+        <script src="/components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="/components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+        <script src="/components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script src="/components/moment/min/moment-with-locales.min.js"></script>
+        <script src="/components/satellizer/dist/satellizer.js"></script>
+
+        <!-- Front end app scripts -->
+          <script src="/app/app.js"></script>
+          <script src="/app/filters/passengers.js"></script>
+          <script src="/app/services/apiservice.js"></script>
+          <script src="/app/services/gservice.js"></script>
+          <script src="/app/services/mapservice.js"></script>
+          <script src="/app/controllers/headerCtrl.js"></script>
+          <script src="/app/controllers/eventsCtrl.js"></script>
+          <script src="/app/controllers/eventsShowCtrl.js"></script>
+          <script src="/app/controllers/eventsNewCtrl.js"></script>
+          <script src="/app/controllers/settingsCtrl.js"></script>
+          <script src="/app/controllers/homeCtrl.js"></script>
+          <script>
+            var user=<%- JSON.stringify(user) %>;
+            var user_name="<%= user.name%>";
+            var user_id="<%= user.id%>";
+          </script>
+    </head>
+    <body>
+
+        <header ng-controller="headerCtrl" >
+          <div class="container">
+            <div class="row">
+              <a ui-sref="home" class="col-sm-3 logo">
+                <img src="/assets/img/logo.svg" style="float:left; margin-right:10px" />
+                <h1>Carpooling</h1>
+                <span><strong>nearsoft</strong> labs</span>
+              </a>
+
+              <div class="col-sm-7 menu">
+                <ul>
+                  <li><a ui-sref="events"  ui-sref-active="active">Events</a></li>
+
+                </ul>
+              </div>
+              <div class="col-sm-2 user">
+
+                <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="">
+                John Smith
+                <p><a href="/logout">Logout</a></p>
+
+              </div>
+
+            </div>
+            </div>
+        </header>

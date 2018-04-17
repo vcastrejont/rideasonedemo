@@ -1,0 +1,8 @@
+{
+  "name": "Nearsoft Carpooling",
+  "version": "0.1.0",
+  "description": "Api for carpooling events",
+  "title": "Carpooling api doc",
+  "sampleUrl": "https://www.rideas.one",
+  "sampleUrl2": "http://localhost:3000"
+}

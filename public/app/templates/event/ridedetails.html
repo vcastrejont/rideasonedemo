@@ -1,0 +1,27 @@
+<a class="close left" ng-click="view.showRide()"><i class="fa fa-times" aria-hidden="true"></i></a>
+<img src="{{view.showride.driver.photo}}" class="profile xl" />
+<h2>{{view.showride.driver.name}}</h2>
+<p class="email">{{view.showride.driver.email}}</p>
+<table class="cols2">
+  <tr>
+    <td>Departure time</td>
+    <td>{{view.showride.departure | date:'h a'}}</td>
+  </tr>
+  <tr>
+    <td>Available seats</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>Is round trip?</td>
+    <td>yes</td>
+  </tr>
+</table>
+<p>
+  {{view.showride.comments}}
+</p>
+<a href="#" class="btn blue">Join this ride</a>
+<p>
+  Estimated pick up time:
+  <br />
+  <strong>6:52pm</strong>
+</p>

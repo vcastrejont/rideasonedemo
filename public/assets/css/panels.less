@@ -1,0 +1,166 @@
+// main: app.less 
+//---- Panels -------
+.panel{
+  position: absolute;
+  top:0;
+  background-color: @colorwhite; 
+  margin-top: 80px;
+  padding: 10px;
+  z-index: 2;
+  padding: 20px 40px;
+  width: 35%;
+  min-height: 200px;
+  &.center{
+    width: 60%;
+    min-width: 400px;
+    padding: 40px;
+    min-height: 400px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &.right{
+    right: 20px;
+  }
+  &.left{
+    left: 20px;
+  }
+  &.small{
+  
+  }
+  &.xs{
+    width: 15%;
+    min-width: 350px;
+    padding: 20px;
+  }
+  
+  &.top{
+    margin-top: 70px;
+  }
+  &.bottom{
+    top:220px;
+  }
+  .close{
+    background-color: @colorred;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    top:10px;
+    right: -20px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    &.left{
+      left:-20px
+    }
+    i{
+      line-height: 40px;
+    }
+  }
+  .back{
+    background-color: @colorblue;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    top:120px;
+    right: -20px;
+    text-align: center;
+    
+    font-size: 20px;
+    color: #fff; 
+    i{
+      margin-right: 5px;
+      line-height: 40px ;
+    }
+  }
+  .edit{
+    background-color: #fff;
+    width: 20px;
+    height: 40px;
+    border-radius: 0 10px 10px 0 ;
+    position: absolute;
+    top:20px;
+    right: -20px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 12px;
+    color: @colororange;
+    opacity: 0.5;
+    transition: all 0.2s;
+    &:hover{
+      opacity: 1;
+    }
+    i{
+      margin-right: 5px;
+    }
+  }
+  h2{
+    font-size: 22px;
+    margin: 0;
+    &.bg{
+      background-color:@colorbluedark;
+      color:#fff;
+      margin: -20px -20px 10px -20px;
+      padding: 10px 20px;
+    }
+  }
+  ul.links{
+    padding: 0;
+    list-style: none;
+    li{
+      display: inline;
+      margin: 0 10px;
+      a{
+        color:#333;
+      }
+    }
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 20px;
+  }
+  
+  &#eventpanel{
+    .title{
+      border-bottom: 0px dashed #ccc;
+      overflow: hidden;
+      a{
+        float: left;
+        width: 40px;
+      }
+      span{
+        float: left;
+        width: 240px;
+        line-height: 25px;
+        margin-bottom: 10px;
+      }
+    }
+      text-align: center;
+    .time{
+      font-weight: bold;
+    }
+    .organizer1{
+      text-align:right;
+      padding: 0;
+    }
+    .organizer2{
+      padding: 0;
+      text-align: left;
+      line-height: 16px;
+      span{
+        font-weight: lighter;
+        font-size: 12px;
+      }
+    }
+    .description{
+      clear: both;
+      color:#333;
+      text-align: left;
+      padding: 10px;
+    }
+  }
+ footer{
+   padding: 0;
+ }
+}

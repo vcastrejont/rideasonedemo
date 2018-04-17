@@ -1,0 +1,59 @@
+<a class="close left" ng-click="addcar = !addcar"><i class="fa fa-times" aria-hidden="true"></i></a>
+<h2 class="tc">Add my car</h2>
+<form class="form-horizontal form-ride" method="post" ng-submit="view.addCar()">
+  <div class="form-group location">
+    <label class="control-label ">Select a departure location</label>
+    <input type="text" class="form-control " id="autocomplete" ng-model="newcar.place" autofocus>
+    <a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="form-group ">
+        <label class="control-label">Departure time</label>
+        <input type="text" class="form-control timepicker" ng-model="newcar.departuretime" ui-timepicker>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="form-group right">
+        <label class="control-label">Available seats</label>
+        <input type="number" class="form-control " ng-model="newcar.seats">
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Comments</label>
+    <input type="text" class="form-control" ng-model="newcar.comments">
+  </div>
+  <div class="form-group tc">
+    <label class="control-label">is this a round trip?</label>
+    <div class="onoffswitch ">
+      <input type="checkbox" class="onoffswitch-checkbox" id="rts" ng-model="roundtrip">
+      <label class="onoffswitch-label" for="rts"></label>
+    </div>
+  </div>
+  <div class="roundtrip" ng-show="roundtrip">
+    <div class="form-group">
+      <label class="control-label">Select a departure location</label>
+      <input type="text" class="form-control " autofocus>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group ">
+          <label class="control-label">Departure time</label>
+          <input type="text" class="form-control timepicker" ng-model="event.starttime">
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="form-group right">
+          <label class="control-label">Available seats</label>
+          <input type="text" class="form-control ">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="tc">
+    <button type="submit" class="btn btn-ride sm tc">Add ride</button>
+  </footer>
+
+</form>

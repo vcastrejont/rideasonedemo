@@ -1,0 +1,127 @@
+<!doctype html>
+<html  lang="en" >
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>RideAsOne</title>
+        <meta name="description" content="Carpooling app for business">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="google-signin-client_id"  content="764821343773-cjpf8lnubnnmjrupiu8oen4vsacgcq9n.apps.googleusercontent.com">
+        <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/png" href="assets/icons/favicon.png" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" >
+        <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="/assets/css/material-kit.css" >
+        <link rel="stylesheet" href="/components/jquery-timepicker-jt/jquery.timepicker.css" >
+        <link rel="stylesheet" href="/components/sweetalert/dist/sweetalert.css" >
+        <link rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+        <link rel="stylesheet" href="/assets/css/app.css">
+
+        <!-- Vendor scripts -->
+        <script src="/components/jquery/dist/jquery.min.js"></script>
+        <script src="/components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFTH_Sly3AHfEXLm_JsckSZaiQX8S49tk&libraries=places"></script>
+        <script src="/components/angular/angular.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js">
+        </script>
+
+        <!-- AngularFire -->
+        <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+
+        <script src="/components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="/components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+        <script src="/components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script src="/components/moment/min/moment-with-locales.min.js"></script>
+        <script src="/components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="/components/angular-directive.g-signin/google-plus-signin.js"></script>
+        <script src="/components/ngstorage/ngStorage.min.js"></script>
+        <script src="components/angular-moment/angular-moment.js"></script>
+
+        <script src="/components/jquery-timepicker-jt/jquery.timepicker.min.js"></script>
+        <script src="/components/angular-jquery-timepicker/src/timepickerdirective.min.js"></script>
+        <script src="/components/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
+        <script src="/components/sweetalert/dist/sweetalert.min.js"></script>
+
+        <script src="assets/js/material.min.js"></script>
+        <script src="assets/js/jquery.easing.min.js"></script>
+        <script src="assets/js/material-kit.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyBPA6TkgY1Y589UXOmUWz8rUNcYntqmnns",
+            authDomain: "vocal-etching-118719.firebaseapp.com",
+            databaseURL: "https://vocal-etching-118719.firebaseio.com",
+            storageBucket: "vocal-etching-118719.appspot.com",
+            messagingSenderId: "764821343773"
+          };
+          firebase.initializeApp(config);
+        </script>
+
+        <!-- App script -->
+        <script src="/rideasone.js"></script>
+
+    </head>
+
+    <body ng-app="carPoolingApp" >
+      <nav class="navbar navbar-fixed-top">
+          <div class="container">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-main">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+
+                  <a class="navbar-brand " href="#home">
+                    <img class="logo" src="assets/img/logo.png" alt="">
+                    Ride<span>as</span>one
+                  </a>
+              </div>
+
+              <div class="collapse navbar-collapse" id="navigation-main" ng-controller="headerCtrl">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#home" >Home</a></li>
+                    <li><a ui-sref="events"  ui-sref-active="active">Events</a></li>
+                    <li><a ui-sref="mobile"  ui-sref-active="active">Mobile</a></li>
+                    <li  ng-mouseover="searchClass='open'"   ng-mouseleave="searchClass=''">
+                      <input type="text" id="search" ng-class="searchClass">
+                      <a href="#" class="searchlink"><i class="fa fa-search " aria-hidden="true"></i></a>
+                    </li>
+                    <li role="separator" class="dividerv"></li>
+                    <li><a ui-sref="notifications" ui-sref-active="active"><i class="fa fa-envelope-o" aria-hidden="true"></i><span class="badgedanger">{{notifications}}</a></li>
+
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">John Smith
+                        <img src="https://randomuser.me/api/portraits/men/11.jpg"  class="profile">
+                        <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li><a ui-sref="profile" >Your profile</a></li>
+                        <li><a ui-sref="logout">Logout</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+
+      <section class="content">
+        <mapcanvas id="map_canvas"></mapcanvas>
+        <div ui-view></div>
+      </section>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-75316638-1', 'auto');
+        ga('send', 'pageview');
+      </script>
+
+  </body>
+
+</html>

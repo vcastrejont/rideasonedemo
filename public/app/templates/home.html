@@ -1,0 +1,74 @@
+
+<main id="home" class="panel center small ">
+  <h2>Welcome {{user.name}}!</h2>
+  <h3 ng-show="rides.length > 0">Your upcoming rides</h3>
+  <h5 ng-hide="rides.length > 0">
+    You can start by searching for <a ui-sref="events">events</a> or create a <a ui-sref="eventsnew">new one.</a>
+  </h5>
+  <section class="rides" ng-show="rides.length > 0">
+    <article class="row"  ng-repeat="ride in rides" ui-sref="eventshow({ id: ride.event})">
+      <header class="col-sm-2">
+        <ul>
+          <li class="date">{{ride.departure|amCalendar}}</li>
+          <li class="role">Driving</li>
+        </ul>
+      </header>
+      <summary class="col-sm-10">
+        <h4>Team building week! at Nearsoft Hermosillo</h4>
+        <div class="row">
+          <div class="col-xs-3">
+            <h5>Driver</h5>
+            <figure>
+              <img src="{{ride.driver.photo}}" class="profile sm" alt="{{ride.driver.name}} ">
+              <label>{{ride.driver.name  | limitTo : 6}}</label>
+            </figure>
+
+          </div>
+          <div class="col-xs-5">
+            <h5>Passengers</h5>
+            <figure ng-repeat="passenger in ride.passengers">
+              <img src="{{passenger.user.photo}}" class="profile sm" alt="{{passenger.user.name}}">
+            </figure>
+            <figure>
+              <img src="https://randomuser.me/api/portraits/women/11.jpg" class="profile sm" alt="laura">
+              <label>Laura</label>
+            </figure>
+            <figure>
+              <img src="https://randomuser.me/api/portraits/women/10.jpg" class="profile sm" alt="laura">
+              <label>Clarissa</label>
+            </figure>
+            <figure>
+              <img src="https://randomuser.me/api/portraits/women/20.jpg" class="profile sm" alt="laura">
+              <label>Ana</label>
+            </figure>
+            <figure>
+              <img src="https://randomuser.me/api/portraits/women/21.jpg" class="profile sm" alt="laura">
+              <label>Miriam</label>
+            </figure>
+          </div>
+          <div class="col-xs-4">
+            {{ride.place.name}}
+          </div>
+
+        </div>
+
+    </article>
+  </section>
+
+</main>
+
+
+
+<script>
+  $(document).ready(function(){
+    $('.rides').slimScroll({
+      position: 'right',
+      height: '450px',
+      railVisible: false,
+      alwaysVisible: false,
+      color: '#59BFDF',
+      distance: '0',
+      size: '5px'
+    });
+  });
+</script>

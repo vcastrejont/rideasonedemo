@@ -1,0 +1,55 @@
+<div class="panel left" id="newevent" >
+  <form  novalidate  class="form-horizontal form-ride"  ng-submit="saveData()" novalidate>
+    <h3 class="text-center">New event</h3>
+    <a class="close" ui-sref="events"><i class="fa fa-times" aria-hidden="true"></i></a>
+    <div class="form-group">
+      <label class="control-label">Event name</label>
+      <input type="text" class="form-control" ng-model="event.name" placeholder="Add a name" autofocus required>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Location</label>
+      <input type="text"  class="form-control autocomplete" ng-model="event.address" 
+      id="autocomplete1"
+      required>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group left">
+          <label class="control-label left">Start date</label>
+           <input type="text" class="form-control" id="event_date" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="event.startDate" is-open="displayDate"  datepicker-options="dateOptions" ng-click="displayDate=!displayDate" ng-change="setDate()" required>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="form-group ">
+          <label class="control-label">Start time</label>
+            <input type="text" ng-model="event.startTime" class="form-control timepicker" ui-timepicker="timePickerOptions" ng-change="setTime()"  required>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group left">
+          <label class="control-label left">End date</label>
+           <input type="text" class="form-control" id="event_date" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="event.endDate" is-open="displayDate2"  datepicker-options="dateOptions" ng-click="displayDate2=!displayDate2" required>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="form-group ">
+          <label class="control-label">End time</label>
+          <input type="text"  ui-timepicker="timePickerOptions" ng-model="event.endTime" class="form-control timepicker" ui-timepicker/>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label">Description</label>
+      <input type="text" class="form-control" ng-model="event.description" placeholder="Tell about your event" >
+    </div>
+      
+   
+  <footer class="text-center">
+    <button class="btn  btn-ride" type="submit" ng-click="submitted=true" >Save event</button>
+    <button  class="btn" ui-sref="events" type="button">Cancel</button>
+  </footer>
+  </form>  
+</div>

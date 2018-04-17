@@ -1,0 +1,26 @@
+<div class="container">
+  <div ng-show="connected">
+	 	<div class="log">Welcome to Carpooling Chat</div>
+	 	<div class="log">{{strParticipants}}</div>
+  </div>
+  <div>
+      <ul>
+      	<li ng-class="{'message':message.style,'log':!message.style}" ng-repeat="message in messages" >
+      		<span ng-show="message.style" ng-style="{color:message.color}" >{{message.username}} : </span >{{message.content}}
+      	</li>
+      </ul>
+  </div>
+
+  <div class="bottommsg">
+      <div class="container">
+        <form class="form-inline">
+          <div class="form-group" style="width: 80%;">
+        	    <input class="form-control input-lg" ng-change="updateTyping()" type="text" placeholder="Type your message" ng-enter="sendMessage()" ng-model="message" style="width: 100%;">
+          </div>
+      	  <div class="form-group pull-right" style="width: 10%;">
+      		    <button class="btn btn-primary btn-lg" ng-click="sendMessage()">Send</button>
+      	  </div>
+        </form>
+      </div>
+   </div>
+</div>

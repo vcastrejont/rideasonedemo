@@ -1,0 +1,184 @@
+<div class="panel left xs top" id="eventpanel">
+
+  <h2 class="title">
+    <a ng-click="view.back()" >
+      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    </a>
+    <span> {{view.event.name}} at {{view.event.place.name}}</span>
+  </h2>
+  <p class="time">
+    <time>{{ view.event.starts_at | amCalendar }}</time>
+  </p>
+  <p class="address"> {{view.event.place.address}}</p>
+<div class="row">
+  <div class="organizer1 col-sm-5">
+    <img ng-src="{{view.event.organizer.photo}}" alt="{{view.event.organizer.name}}" class="profile sm">
+  </div>
+  <div class="organizer2 col-sm-7">
+    <strong>{{view.event.organizer.name}}</strong>
+    <br><span>Event creator</span>
+  </div>
+</div>
+  <div class="description">
+    {{view.event.description}}</div>
+
+
+
+  <ul class="links">
+    <li><a ><i class="fa fa-envelope-o" aria-hidden="true"></i> Invite</a></li>
+    <li><a ><i class="fa fa-pencil"></i> Edit </a></li>
+    <li><a ng-click="view.deleteEvent(view.event)"><i class="fa fa-trash-o"></i> Remove </a></li>
+
+  </ul>
+
+  <div id="availrides">
+    <h2>Available rides
+      <a href="#dashboard" class="btn  btn-info btn-xs">	Going	</a>
+  		<a class="btn btn-info btn-xs">	Return</a>
+    </h2>
+
+    <header>
+      <div class="dr">Driver</div>
+      <div class="st">Seats</div>
+      <div class="dp">Departure</div>
+    </header>
+    <div class="list">
+      <div class="row" ng-repeat="ride in view.event.going_rides" ng-click="view.showRide(ride)"  ng-class="{selected: ride._id === idSelectedRide}">
+        <div class="dr"><img src="https://randomuser.me/api/portraits/men/10.jpg" class="profile xs"> John smith</div>
+        <div class="st">{{ride.seats || "-"}}</div>
+        <div class="dp">{{ride.departure | date:'h a'}}</div>
+      </div>
+    </div>
+
+    <footer class="tc">
+      <a class="btn btn-ride sm" ng-click="view.addcar=true"><i class="fa fa-plus" aria-hidden="true"></i> Add my car</a>
+    </footer>
+  </div>
+</div>
+
+<div id="ridedetails" class="panel top right xs tc" ng-show="view.showride">
+  <a class="close left" ng-click="view.closeRide()"><i class="fa fa-times" aria-hidden="true"></i></a>
+  <img src="https://randomuser.me/api/portraits/men/10.jpg" class="profile xl" />
+  <h2>John smith</h2>
+  <p class="email">{{view.showride.driver.email}}</p>
+  <p><strong>Departure from:</strong><br>
+    {{view.showride.place.address}}</p>
+
+  <table class="cols2">
+    <tr>
+      <td>Departure time</td>
+      <td>{{view.showride.departure | date:'h:mma'}}</td>
+    </tr>
+
+    <tr>
+      <td>Available seats</td>
+      <td>{{view.showride.seats }}</td>
+    </tr>
+    <tr>
+      <td>Is round trip?</td>
+      <td></td>
+    </tr>
+  </table>
+  <p>
+    {{view.showride.comment}}
+  </p>
+
+  <div>
+  <p>
+    <strong>Passangers</strong>
+  </p>
+  <p>
+    <span >
+      <img src="https://randomuser.me/api/portraits/women/10.jpg" class="profile xs" alt="{{passenger.user.name}}"  >
+      <img src="https://randomuser.me/api/portraits/women/12.jpg" class="profile xs" alt="{{passenger.user.name}}"  >
+
+    </span>
+  </p>
+
+  </div>
+
+  <a  ng-click="view.joinCar(view.showride)" class="btn blue">Join this ride</a>
+  <p>
+    Estimated pick up time:
+    <br />
+    <strong>-</strong>
+  </p>
+</div>
+
+<div id="addride" class="panel right xs top " ng-show="view.addcar">
+  <a class="close left" ng-click="view.addcar = false"><i class="fa fa-times" aria-hidden="true"></i></a>
+  <h2 class="tc">Add my car</h2>
+  <form class="form-horizontal form-ride" method="post" ng-submit="view.addCar()">
+    <div class="form-group location">
+      <label class="control-label ">Select a departure location</label>
+      <input type="text" class="form-control "  ng-model="newcar.place" autofocus id="autocomplete1">
+      <a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group ">
+          <label class="control-label">Departure time</label>
+          <input type="text" class="form-control timepicker" ng-model="newcar.departure"  ui-timepicker="view.timePickerOptions">
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="form-group right">
+          <label class="control-label">Available seats</label>
+          <input type="number" class="form-control " ng-model="newcar.seats">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Comments</label>
+      <input type="text" class="form-control" ng-model="newcar.comment">
+    </div>
+    <div class="form-group tc">
+      <label class="control-label">is this a round trip?</label>
+      <div class="onoffswitch ">
+        <input type="checkbox" class="onoffswitch-checkbox" id="rts" ng-model="roundtrip">
+        <label class="onoffswitch-label" for="rts"></label>
+      </div>
+    </div>
+    <div class="roundtrip" ng-show="roundtrip">
+      <div class="form-group">
+        <label class="control-label">Select a return location</label>
+        <input type="text" class="form-control autocomplete" id="autocomplete2" >
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group ">
+            <label class="control-label">Departure time</label>
+            <input type="text" class="form-control timepicker" ng-model="newcar.return_departure"  ui-timepicker="view.timePickerOptions">
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="form-group right">
+            <label class="control-label">Available seats</label>
+            <input type="text" class="form-control"  ng-model="newcar.return_seats">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="tc">
+      <button type="submit" class="btn btn-ride sm tc">Add ride</button>
+    </footer>
+
+  </form>
+</div>
+
+
+
+<script>
+  $(document).ready(function() {
+    $('#availrides .list').slimScroll({
+      position: 'right',
+      height: '120px',
+      railVisible: false,
+      alwaysVisible: true,
+      color: '#59BFDF',
+      distance: '0',
+      size: '5px'
+    });
+  });
+</script>
